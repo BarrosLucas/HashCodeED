@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1566414643 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\edproject\dictionary.c
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"dictionary.h"
+
+1566414730 c:\users\lucas\documents\ufpb\p4\estrutura de dados\edproject\dictionary.h
+	<stdbool.h>
+
+1566417266 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\edproject\delicia.c
+	<stdio.h>
+	<stdlib.h>
+

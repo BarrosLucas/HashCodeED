@@ -1,0 +1,4 @@
+1 - Mudar a função hash
+2 - Leitura de arquivos
+3 - Comparar com funções hash de outras linguagens
+4 - 

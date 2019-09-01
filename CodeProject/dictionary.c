@@ -26,10 +26,8 @@
 #include "dictionary.h"
 
 // Number of linked lists in hash table.
-#define HASH_SIZE 2000
+#define HASH_SIZE 49999
 
-// Each element in linked list is a node.  Node contains
-// a word and a pointer to the next node.
 typedef struct node
 {
     char word[LENGTH + 1];
@@ -37,53 +35,36 @@ typedef struct node
 }
 node;
 
-// Hash table is an array of linked lists.
 node* hashtable[HASH_SIZE];
 
 int hash_function(const char* word);
 
-// Tracks number of words in dictionary.
 int number_of_words = 0;
 
-/**
- * Returns true if word is in dictionary else false.
- */
+
 bool check(const char* word)
 {
     int word_length = strlen(word);
     char lower_word[LENGTH+1];
 
-    // Convert word to lowercase to accurately compare to hash table.
     int i;
     for (i = 0; i < word_length; i++)
     {
-        // If character is uppercase, make it lowercase.
         if(isupper(word[i]))
         {
             lower_word[i] = tolower(word[i]) ;
         }
-        // Otherwise it's already lowercase or it's not a letter.
         else
         {
             lower_word[i] = word[i];
         }
     }
-    // Add null character to end of char array.
     lower_word[word_length] = '\0';
-    // Use hash function to find correct "bucket" to place word.
     int bucket = hash_function(lower_word);
-    // Set cursor to first node in bucket.
     node* cursor = hashtable[bucket];
-    // Until the end of the linked list is reached (cursor == NULL),
-    // compare each word stored in each node to lower_word.  If they're
-    // the same, then the word is in the dictionary and is not mispelled.
-    // Otherwise, it is spelled incorrectly.
     while (cursor != NULL)
     {
-        if (strcmp(lower_word, cursor->word) == 0)
-        {
-            // If lowercase'd word is the same as another in the bucket,
-            // it's a match and return true.
+        if (!strcmp(lower_word, cursor->word)){
             return true;
         }
         cursor = cursor->next;
@@ -93,23 +74,16 @@ bool check(const char* word)
 }
 
 
-/**
- * Loads dictionary into memory.  Returns true if successful else false.
- */
-bool load(const char* dictionary)
-{
-    // Initialize each value in hash table to NULL.
+bool load(){
     int i;
 	for(i = 0; i < HASH_SIZE; i++)
     {
         hashtable[i] = NULL;
     }
 
-    // Open the dictionary text file.
     FILE* the_dictionary;
-    the_dictionary = fopen(dictionary, "r");
+    the_dictionary = fopen("../Anexos/dictionary.txt", "r");
 
-    // Check if dictionary opened correctly.
     if (the_dictionary == NULL)
     {
         printf("Failed to load dictionary");
@@ -117,35 +91,28 @@ bool load(const char* dictionary)
     }
 
     char buffer[LENGTH+1];
-    // Loop through file until end of file is reached.
-    // Save each word in buffer.
     while (fscanf(the_dictionary, "%s", buffer) > 0)
     {
-        // Allocate memory for a new node.
         node* new_node = malloc(sizeof(node));
-        // Set node's next pointer to NULL.
         new_node->next = NULL;
-        // Set node's word to value stored in buffer.
         strcpy(new_node->word, buffer);
-        // Run word through hash function to set bucket in hash table.
+
         int bucket = hash_function(new_node->word);
-        // If it's the first node being added to the bucket, replace
-        // the NULL value with the new node.
+
         if (hashtable[bucket] == NULL)
         {
             hashtable[bucket] = new_node;
         }
-        // Otherwise set new node's pointer to the first node in the linked list.
-        // Then set new node to be the first node in the linked list.
+
         else
         {
             new_node->next = hashtable[bucket];
             hashtable[bucket] = new_node;
         }
-        // Track number of words in dictionary.
+
         number_of_words++;
     }
-    // Done with text file.  Time to close it.
+    printf("uai");
     fclose(the_dictionary);
     // Everything seems to have gone well, return true.
     return true;
@@ -194,11 +161,8 @@ int hash_function(const char* word)
     int sum = 0;
     int word_length = strlen(word);
 	int i;
-    for (i = 0; i < word_length; i++)
-    {
-        sum += word[i];
+    for (i = 0; i < word_length; i++){
+        sum += word[i]*(pow(26,i));
     }
-
-    int bucket = sum % HASH_SIZE;
-    return bucket;
+    return sum % HASH_SIZE;
 }

@@ -24,6 +24,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "dictionary.h"
+#include <math.h>
 
 // Number of linked lists in hash table.
 #define HASH_SIZE 49999
@@ -35,10 +36,9 @@ typedef struct node
 }
 node;
 
-node* hashtable[HASH_SIZE];
+node* hashtable[HASH_SIZE+1];
 
 int hash_function(const char* word);
-
 int number_of_words = 0;
 
 
@@ -91,12 +91,11 @@ bool load(){
     }
 
     char buffer[LENGTH+1];
-    while (fscanf(the_dictionary, "%s", buffer) > 0)
-    {
+    while (fscanf(the_dictionary, "%s", buffer) > 0){
         node* new_node = malloc(sizeof(node));
         new_node->next = NULL;
         strcpy(new_node->word, buffer);
-
+        printf("%d - new node: %s\n",number_of_words,new_node->word);
         int bucket = hash_function(new_node->word);
 
         if (hashtable[bucket] == NULL)

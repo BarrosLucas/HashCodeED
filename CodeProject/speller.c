@@ -4,4 +4,5 @@ int main(){
     bool loadDic;
     loadDic = load();
     printf("load? %d",loadDic);
+    return 0;
 }

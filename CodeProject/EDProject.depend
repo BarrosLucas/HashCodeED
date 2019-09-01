@@ -18,18 +18,19 @@
 	<stdio.h>
 	<stdlib.h>
 
-1567366650 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567376775 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"dictionary.h"
+	<math.h>
 
 1567367147 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.h
 	<stdbool.h>
 
-1567366716 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
+1567368420 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
 	<stdio.h>
 	"dictionary.h"
 

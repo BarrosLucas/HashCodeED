@@ -45,26 +45,11 @@ int number_of_words = 0;
 bool check(const char* word)
 {
     int word_length = strlen(word);
-    char lower_word[LENGTH+1];
-
-    int i;
-    for (i = 0; i < word_length; i++)
-    {
-        if(isupper(word[i]))
-        {
-            lower_word[i] = tolower(word[i]) ;
-        }
-        else
-        {
-            lower_word[i] = word[i];
-        }
-    }
-    lower_word[word_length] = '\0';
-    int bucket = hash_function(lower_word);
+    int bucket = hash_function(word);
     node* cursor = hashtable[bucket];
     while (cursor != NULL)
     {
-        if (!strcmp(lower_word, cursor->word)){
+        if (!strcmp(word, cursor->word)){
             return true;
         }
         cursor = cursor->next;
@@ -91,11 +76,11 @@ bool load(){
     }
 
     char buffer[LENGTH+1];
+
     while (fscanf(the_dictionary, "%s", buffer) > 0){
         node* new_node = malloc(sizeof(node));
         new_node->next = NULL;
         strcpy(new_node->word, buffer);
-        printf("%d - new node: %s\n",number_of_words,new_node->word);
         int bucket = hash_function(new_node->word);
 
         if (hashtable[bucket] == NULL)
@@ -111,9 +96,8 @@ bool load(){
 
         number_of_words++;
     }
-    printf("uai");
     fclose(the_dictionary);
-    // Everything seems to have gone well, return true.
+
     return true;
 }
 
@@ -157,11 +141,12 @@ bool unload(void)
 // remainder after dividing by the size of the hash table.
 int hash_function(const char* word)
 {
-    int sum = 0;
+    double sum = 0;
     int word_length = strlen(word);
 	int i;
     for (i = 0; i < word_length; i++){
         sum += word[i]*(pow(26,i));
     }
-    return sum % HASH_SIZE;
+    int resto = ((unsigned long long int)sum)%HASH_SIZE;
+    return resto;
 }

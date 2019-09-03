@@ -36,16 +36,12 @@
 			<Add library="mingw32" />
 			<Add directory="../../../../../../../MinGW" />
 		</Linker>
-		<Unit filename="delicia.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="dictionary.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dictionary.h" />
 		<Unit filename="speller.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />

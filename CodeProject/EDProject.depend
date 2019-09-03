@@ -18,7 +18,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1567519730 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567523679 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
@@ -30,7 +30,18 @@
 1567367147 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.h
 	<stdbool.h>
 
-1567519920 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
+1567528725 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
+	<windows.h>
+	<winbase.h>
 	<stdio.h>
 	"dictionary.h"
+
+1567523679 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"dictionary.h"
+	<math.h>
 

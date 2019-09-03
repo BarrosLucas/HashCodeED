@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "dictionary.h"
+#include "dictionary.c"
 int main(){
     if(load()){
         printf("Carregou o dicionário\n");

@@ -20,8 +20,8 @@ int main(){
 
     char word[LENGTH+1];
     char words[60714][38];
-    FILE* the_constitution = fopen("constituicao.txt", "r");
-    FILE* relatorio = fopen("relatorio.txt", "w");
+    FILE* the_constitution = fopen("../Anexos/constituicao.txt", "r");
+    FILE* relatorio = fopen("../Anexos/relatorio.txt", "w");
 
     while (fscanf(the_constitution, "%s", word) > 0){
         //QueryPerformanceCounter((LARGE_INTEGER *)&start);

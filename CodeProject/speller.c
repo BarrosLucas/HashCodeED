@@ -1,13 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "dictionary.c"
+#ifdef __linux__
+    #include "dictionary.c"
+    #include <sys/time.h>
+#else
+    #include "dictionary.h"
+#endif // __linux__
+#include "dictionary.h"
+#include <string.h>
 #include <time.h>
 #include <math.h>
+//#include "Fila.h"
 
 int have=0,dont_have=0, qtdWord=0;
+
+
 int main(){
+    struct Node* words = NULL;
+    struct timespec start, end;
+    uint64_t total_time = 0;
     //__int64 freq,start,stop;
-    time_t inicio,fim, myTime;
+
 
 
     double time = 0;
@@ -19,25 +32,27 @@ int main(){
     }
 
     char word[LENGTH+1];
-    char words[60714][38];
+    //char words[60714][38];
     FILE* the_constitution = fopen("../Anexos/constituicao.txt", "r");
     FILE* relatorio = fopen("../Anexos/relatorio.txt", "w");
 
     while (fscanf(the_constitution, "%s", word) > 0){
         //QueryPerformanceCounter((LARGE_INTEGER *)&start);
-        inicio = clock();
+        clock_gettime(CLOCK_MONOTONIC_RAW, &start);
         bool exist = check(word);
-        fim = clock();
+        clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+
         if (exist){
             have++;
         }else{
-            strcpy(words[dont_have],word);
+            //strcpy(words[dont_have],word);
+  //          Append(&words,word);
             dont_have++;
         }
-        
+
         //QueryPerformanceCounter((LARGE_INTEGER *)&stop);
         //time += ((double)stop-(double)start)/CLOCKS_PER_SEC;
-        myTime += (inicio-fim)/CLOCKS_PER_SEC;
+         total_time += (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
     }
 
     qtdWord = have + dont_have;
@@ -51,9 +66,7 @@ int main(){
 
     printf("Palavras que nao tem: \n");
     int i;
-    for(i=0;i<dont_have;i++){
-        fprintf(relatorio, "%d - %s\n",i+1,words[i]);
-    }
+    //printList(&words);
 
 
     /*relatorio<<"Numero total de palavras: "<<qtdWord<<"\n";
@@ -68,7 +81,8 @@ int main(){
 
     printf("Tem: %d\nNao tem: %d\n",have,dont_have);
     //printf("Total ms: %g ms.\n",total);
-    printf("Clock: %ld\n",myTime);
+    printf("Clock: %lf\n",total_time);
     fclose(the_constitution);
     return 0;
 }
+

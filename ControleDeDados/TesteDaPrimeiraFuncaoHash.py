@@ -3,13 +3,13 @@ import pandas as pd
 PRIMEIRO CASO COM 5000 BUCKETS
 FUNÇÃO HASH BASEADO NAS LETRAS
 """
-buckets = [0]*2000
+buckets = [0]*49999
 
 def hashFunction(palavra):
     soma = 0
     for i in palavra:
         soma += ord(i)
-    return soma%2000
+    return soma%49999
 
 f = open("ascii_noaccent_noduplicates_FIXED_v2.txt","r")
 a = f.readline()

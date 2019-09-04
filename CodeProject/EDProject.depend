@@ -18,7 +18,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1567523679 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567602602 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
@@ -30,13 +30,17 @@
 1567367147 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.h
 	<stdbool.h>
 
-1567528725 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
-	<windows.h>
-	<winbase.h>
+1567601685 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
 	<stdio.h>
+	<stdlib.h>
+	"dictionary.c"
 	"dictionary.h"
+	"dictionary.h"
+	<string.h>
+	<time.h>
+	<math.h>
 
-1567523679 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567602602 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
@@ -44,4 +48,12 @@
 	<ctype.h>
 	"dictionary.h"
 	<math.h>
+
+1567559765 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\fila.h
+
+1567568373 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\fila.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Fila.h"
 

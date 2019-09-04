@@ -139,7 +139,17 @@ bool unload(void)
 // Maps a word to an integer value to place it in the hash table.
 // Sum the value of each character in the word, then find the
 // remainder after dividing by the size of the hash table.
-int hash_function(const char* word)
+int hash_function(const char *word){
+    double sum = 0;
+    int word_length = strlen(word);
+    int i;
+    for(i = 0; i < word_length; i++){
+        sum += word[i];
+    }
+    return ((unsigned long long int)sum)%HASH_SIZE;
+}
+
+/*int hash_function(const char* word)
 {
     double sum = 0;
     int word_length = strlen(word);
@@ -149,4 +159,4 @@ int hash_function(const char* word)
     }
     int resto = ((unsigned long long int)sum)%HASH_SIZE;
     return resto;
-}
+}*/

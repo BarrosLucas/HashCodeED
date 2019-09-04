@@ -36,6 +36,10 @@
 			<Add library="mingw32" />
 			<Add directory="../../../../../../../MinGW" />
 		</Linker>
+		<Unit filename="Fila.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fila.h" />
 		<Unit filename="dictionary.c">
 			<Option compilerVar="CC" />
 		</Unit>

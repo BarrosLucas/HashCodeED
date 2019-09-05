@@ -11,13 +11,11 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
-//#include "Fila.h"
 
 int have=0,dont_have=0, qtdWord=0;
 
 
 int main(){
-    struct Node* words = NULL;
 
     #ifdef __linux__
         struct timespec start, end;
@@ -26,27 +24,19 @@ int main(){
         struct timeb start, end;
         long int total_time = 0;
     #endif
-    //__int64 freq,start,stop;
-
-
 
     double time = 0;
-    //QueryPerformanceFrequency((LARGE_INTEGER *)&freq);
     if(load()){
         printf("Carregou o dicionário\n");
     }else{
         printf("Falha ao carregar\n");
     }
-
-    //printBuckets();
-
     char word[LENGTH+1];
     char words[60714][38];
     FILE* the_constitution = fopen("../Anexos/constituicao.txt", "r");
     FILE* relatorio = fopen("../Anexos/relatorio.txt", "w");
 
     while (fscanf(the_constitution, "%s", word) > 0){
-        //QueryPerformanceCounter((LARGE_INTEGER *)&start);
         #ifdef __linux__
             clock_gettime(CLOCK_MONOTONIC_RAW, &start);
         #else
@@ -68,13 +58,8 @@ int main(){
             have++;
         }else{
             strcpy(words[dont_have],word);
-  //          Append(&words,word);
             dont_have++;
         }
-
-        //QueryPerformanceCounter((LARGE_INTEGER *)&stop);
-        //time += ((double)stop-(double)start)/CLOCKS_PER_SEC;
-
     }
 
     qtdWord = have + dont_have;
@@ -88,16 +73,9 @@ int main(){
 
     printf("Palavras que nao tem: \n");
     int i;
-    //printList(&words);
-
     for(i=0;i<dont_have;i++){
         fprintf(relatorio, "%s\n", words[i]);
     }
-
-
-    /*relatorio<<"Numero total de palavras: "<<qtdWord<<"\n";
-    relatorio<<"Numero de palavras que falharam no spell check:"<<dont_have;
-    relatorio<<"Tempo de execucao: "<<myTime<<"\n"; */
 
     if(unload()){
         printf("Descarregou o dicionário\n");
@@ -106,7 +84,6 @@ int main(){
     }
 
     printf("Tem: %d\nNao tem: %d\n",have,dont_have);
-    //printf("Total ms: %g ms.\n",total);
     printf("Clock: %ld ms\n",total_time);
     fclose(the_constitution);
     return 0;

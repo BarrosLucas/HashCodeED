@@ -18,6 +18,7 @@ def hashFunction(palavra):
     numero = (tamanho*primeira)+segunda
     numero *= const
     soma = numero - int(numero)
+    #print("Soma: ",soma)
     return int(49999*soma)
 
 f = open("ascii_noaccent_noduplicates_FIXED_v2.txt","r")
@@ -28,6 +29,8 @@ while(a!= ''):
     a = f.readline()
 for i in range(0,len(buckets)):
     print("Bucket %d: %d valores" %(i+1,buckets[i]))
+    
+print("Bucket 0: ",buckets[0])
 
 print("Resultados:")
 print("\nMáximo:",max(buckets))

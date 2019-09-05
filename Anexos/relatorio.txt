@@ -1,6 +1,6 @@
-Numero total de palavras do texto: 1
-Número de palavras que falharam no spell check: 1
-Tempo total da verificação: 3
+Numero total de palavras do texto: 60714
+Número de palavras que falharam no spell check: 33757
+Tempo total da verificação: 498 ms
 Lista de palavras que falharam no spell check:
 Num. Ocorrencia - Palavra
 -----------------------------------------

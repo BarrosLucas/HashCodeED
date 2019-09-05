@@ -1,23 +1,3 @@
-/****************************************************************************
- * dictionary.c
- *
- * Computer Science 50
- * Problem Set 6
- *
- * Implements a dictionary's functionality.
- *
- * Functions/definitions in this program are used in speller.c to help create a
- * spellchecker.  Functions include load, unload, check, and size.  Load runs
- * through a text file full of words and loads them into memory as a hash table
- * (dictionary).  Unload frees the memory the hash table is using after it is
- * no longer needed.  Check performs a lookup on the hash table to determine
- * if a word is in the dictionary (if not it's mispelled).  Size counts the number
- * of words in the dictionary.
- *
- * I implemented dictionary.c myself, but take no credit for speller.c as it was
- * already implemented as a part this assignment for edx cs50.
- ***************************************************************************/
-
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +6,6 @@
 #include "dictionary.h"
 #include <math.h>
 
-// Number of linked lists in hash table.
 #define HASH_SIZE 49999
 
 typedef struct node
@@ -36,6 +15,7 @@ typedef struct node
 }
 node;
 
+int buckets[49999+1] = {0};
 node* hashtable[HASH_SIZE+1];
 
 int hash_function(const char* word);
@@ -102,32 +82,20 @@ bool load(){
 }
 
 
-/**
- * Returns number of words in dictionary if loaded else 0 if not yet loaded.
- */
 unsigned int size(void)
 {
     return number_of_words;
 }
 
 
-/**
- * Unloads dictionary from memory.  Returns true if successful else false.
- */
 bool unload(void)
 {
-    // Iterate over all linked lists in hash table.  Set
-    // cursor to point at each one's location in memory.
     int i;
 	for (i = 0; i < HASH_SIZE;i++)
     {
         node* cursor = hashtable[i];
         while (cursor != NULL)
         {
-            // Set temporary pointer to point at cursor's
-            // location in memory.  Move cursor to the next node
-            // so we don't lose track of it before freeing
-            // the current node's (temp's) memory.
             node* temp = cursor;
             cursor = cursor->next;
             free(temp);
@@ -135,28 +103,14 @@ bool unload(void)
     }
     return true;
 }
-
-// Maps a word to an integer value to place it in the hash table.
-// Sum the value of each character in the word, then find the
-// remainder after dividing by the size of the hash table.
-int hash_function(const char *word){
-    double sum = 0;
-    int word_length = strlen(word);
-    int i;
-    for(i = 0; i < word_length; i++){
-        sum += word[i];
-    }
-    return ((unsigned long long int)sum)%HASH_SIZE;
-}
-
-/*int hash_function(const char* word)
+int hash_function(const char* word)
 {
-    double sum = 0;
+    unsigned long long int sum = 0;
     int word_length = strlen(word);
 	int i;
     for (i = 0; i < word_length; i++){
-        sum += word[i]*(pow(26,i));
+        sum += floor(word[i]*31*word_length);
     }
-    int resto = ((unsigned long long int)sum)%HASH_SIZE;
-    return resto;
-}*/
+
+    return sum%HASH_SIZE;
+}

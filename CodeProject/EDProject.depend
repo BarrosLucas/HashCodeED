@@ -18,7 +18,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1567602602 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567645805 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
@@ -30,17 +30,19 @@
 1567367147 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.h
 	<stdbool.h>
 
-1567601685 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
+1567624289 source:c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\speller.c
 	<stdio.h>
 	<stdlib.h>
 	"dictionary.c"
+	<sys/time.h>
 	"dictionary.h"
+	<sys/timeb.h>
 	"dictionary.h"
 	<string.h>
 	<time.h>
 	<math.h>
 
-1567602602 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
+1567645805 c:\users\lucas\documents\ufpb\p4\estrutura de dados\projetoed\codeproject\dictionary.c
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
